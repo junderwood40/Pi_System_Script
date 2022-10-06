@@ -7,7 +7,9 @@
 
 # Make a directory called System_Stats and change directories to that directory
 # Try to make the output for each file look as neat and organized as you can.
-export PATH=$PATH:System_Stats
+
+mkdir System_Stats
+cd System_Stats
 
 
 # Output the following information to a file called kernel
@@ -15,16 +17,23 @@ export PATH=$PATH:System_Stats
     # 2. Kernel Release
     # 3. Kernel Version
     # 4. The operating system
-
+    
+uname -s > kernel
+uname -r >> kernel
+uname -v >> kernel
+uname -o >> kernel
 
 # Output the following information to a file called network
     # 1. Do not print any serial numbers or sensitive information related to the system
     # 2. All network interfaces
+ip link show > network
     
     
 # Output the following information to a file called disk.html
     # 1. All disks
     # 2. The output should include html tags, i.e. <html></html>
+    
+sudo lshw -html > disk.html
 
 
 # Output the following information to a file called cpu
