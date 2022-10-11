@@ -26,6 +26,7 @@ uname -o >> kernel
 # Output the following information to a file called network
     # 1. Do not print any serial numbers or sensitive information related to the system
     # 2. All network interfaces
+
 ip link show > network
     
     
@@ -39,11 +40,17 @@ sudo lshw -html > disk.html
 # Output the following information to a file called cpu
     # 1. The first five lines of the command lscpu
     # 2. The last 12 lines of the command lscpu
+
+lscpu | head -n5 > cpu
+lscpu | tail -n12 >> cpu
+    
     
 
 # Output the following information to a file called block_dev
     # 1. Only the name, size, and type of the block devices
     # 2. The output should use ascii characters for any tree formatting
+    
+lsblk
     
     
 # Output the following information to a file called sata
