@@ -27,14 +27,16 @@ uname -o >> kernel
     # 1. Do not print any serial numbers or sensitive information related to the system
     # 2. All network interfaces
 
-ip link show > network
+sudo lshw -short -sanitize > network
     
     
 # Output the following information to a file called disk.html
     # 1. All disks
     # 2. The output should include html tags, i.e. <html></html>
     
-sudo lshw -html > disk.html
+sudo lshw -short > disk.html
+sudo lshw -html >> disk.html
+
 
 
 # Output the following information to a file called cpu
@@ -50,10 +52,15 @@ lscpu | tail -n12 >> cpu
     # 1. Only the name, size, and type of the block devices
     # 2. The output should use ascii characters for any tree formatting
     
-lsblk
+lsblk -i -o NAME,SIZE,TYPE > block_dev
     
     
 # Output the following information to a file called sata
     # 1. Any Sata devices connected to the machine along with human readable sizes of the devices
     # 2. More specific information about each device that is connected to the machine
+    
+lsscsi -s > sata
+sudo hdparm pi >> sata
+
+
     
